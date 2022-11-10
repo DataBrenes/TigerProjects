@@ -1,0 +1,29 @@
+name: finance
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyter=1.0.0=py310h06a4308_7
+  - jupyter_client=7.2.2=py310h06a4308_0
+  - jupyter_console=6.4.3=pyhd3eb1b0_0
+  - jupyter_core=4.10.0=py310h06a4308_0
+  - jupyterlab_pygments=0.1.2=py_0
+  - jupyterlab_widgets=1.0.0=pyhd3eb1b0_1
+  - jupyterthemes=0.20.0=py_1
+  - matplotlib-base=3.5.2=py310h5701ce4_0
+  - matplotlib-inline=0.1.2=pyhd3eb1b0_2
+  - nb_conda=2.2.1=unix_6
+  - nb_conda_kernels=2.3.1=py310hff52083_1
+  - nbclient=0.5.13=py310h06a4308_0
+  - nbconvert=6.4.4=py310h06a4308_0
+  - nbformat=5.3.0=py310h06a4308_0
+  - notebook=6.4.11=py310h06a4308_0
+  - numpy=1.23.1=py310h53a5b5f_0
+  - pandas=1.4.3=py310h769672d_0
+  - pandocfilters=1.5.0=pyhd3eb1b0_0
+  - pip=22.1.2=py310h06a4308_0
+  - python=3.10.4=h12debd9_0
+  - python-dateutil=2.8.2=pyhd3eb1b0_0
+  - python-fastjsonschema=2.15.1=pyhd3eb1b0_0
+  - python_abi=3.10=2_cp310
+prefix: /home/mbrenes/anaconda3/envs/finance

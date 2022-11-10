@@ -1,0 +1,40 @@
+{
+    "Turnstone": {
+        "interest": 0.03125,
+        "years": 30,
+        "payments_year": 12,
+        "mortgage": 436000,
+        "start_date": "2020-12-01",
+        "term": "full",
+        "escrow": 457.74
+    },
+    "Heloc": {
+        "interest": 0.066369,
+        "years": 20,
+        "payments_year": 12,
+        "mortgage": 100921.88,
+        "start_date": "2022-09-01",
+        "term": "int_only"
+    },
+    "LakeSide": {
+        "interest": 0.0575,
+        "years": 15,
+        "payments_year": 12,
+        "mortgage": 86550.0,
+        "start_date": "2022-11-01",
+        "payback_years": 5,
+        "term": "jumbo"
+    },
+    "BrierRose": {
+        "interest": 0.03375,
+        "years": 30,
+        "payments_year": 12,
+        "mortgage": 277520.0,
+        "start_date": "2021-03-01",
+        "Current_payment": 1767.56,
+        "HOA_club": 161.25,
+        "HOA_resort": 204.0,
+        "escrow": 540.65,
+        "term": "full"
+    }
+}
