@@ -349,3 +349,14 @@ INFO:root:Creating Summary Table
 INFO:root:Closing Browser
 INFO:root:Done checking for bookings, next check in 30 min ( 00:59:08 )
 INFO:root:11/10/2022 00:29:08
+INFO:root:Starting new booking check
+INFO:root:11/10/2022 00:59:08
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 01:29:37 )
+INFO:root:11/10/2022 00:59:37
+INFO:root:Starting new booking check
+INFO:root:11/10/2022 01:29:37

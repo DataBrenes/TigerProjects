@@ -19,6 +19,7 @@ services:
     command: sh -c "python3 newbookings.py"
     depends_on:
      - bookings 
+    restart: always
 
   dashboard:
     image: grandwelcome/dashboard:1.0.0
@@ -29,4 +30,5 @@ services:
      - ./Dashboard/app:/app
      - ./Scraper/app/configs:/app/configs
      - ./Scraper/app/reports:/app/reports
+    restart: always
 
