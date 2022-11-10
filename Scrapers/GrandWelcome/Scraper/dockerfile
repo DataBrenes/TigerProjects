@@ -1,0 +1,23 @@
+FROM python:3.7-alpine
+
+# these lines added to install numpy 
+RUN apk update
+RUN apk add make automake gcc g++ python3-dev
+
+# fix the timezone of the image
+RUN apk add --no-cache tzdata
+ENV TZ=America/Detroit
+
+
+# used to send the output to terminal  without buffering
+ENV PYTHONUNBUFFERED 1 
+
+RUN pip3 install --upgrade pip
+# copy desired requirements file and run pip 
+COPY ./requirements.txt /requirements.txt 
+RUN pip3 install -r /requirements.txt
+
+# create directory on image to  store source code and cd to it. 
+RUN mkdir /app
+COPY ./app /app
+WORKDIR /app

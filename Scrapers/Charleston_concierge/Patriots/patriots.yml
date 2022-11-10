@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  patriots: 
+    image: selenium/standalone-chrome:4.4.0-20220831
+    container_name: patriots_point
+    ports: 
+    - 4444:4444
+    - 7900:7900
+    restart: always
+
+  app:
+    build:
+      context: .
+    volumes:
+     - ./app:/app
+    command: sh -c "python3 patriots.py"
+    depends_on:
+     - patriots 

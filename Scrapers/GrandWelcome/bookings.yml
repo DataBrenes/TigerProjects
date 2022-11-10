@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  bookings:
+    image: selenium/standalone-chrome:4.4.0-20220831
+    container_name: new_bookings
+    ports: 
+    - 4444:4444
+    - 7900:7900
+    volumes:
+     - ./Scraper/app/downloads:/home/seluser/Downloads
+    restart: always
+
+  app:
+    build:
+      context: .
+    volumes:
+     - ./app:/app
+    command: sh -c "python3 newbookings.py"
+    depends_on:
+     - bookings 
