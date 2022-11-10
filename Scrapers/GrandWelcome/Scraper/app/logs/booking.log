@@ -290,3 +290,62 @@ INFO:root:Updating Master List
 INFO:root:Closing Browser
 INFO:root:Done checking for bookings, next check in 30 min ( 19:59:31 )
 INFO:root:11/09/2022 19:29:31
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 21:28:47
+INFO:root:New booking found.
+INFO:root:Updating Calendar
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:root:Updating Master List
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 22:00:15 )
+INFO:root:11/09/2022 21:30:15
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 22:00:15
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:21:55
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:31:38
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:37:17
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:40:08
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:42:09
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/09/2022 23:49:16
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/10/2022 00:22:33
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/10/2022 00:28:49
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 00:59:08 )
+INFO:root:11/10/2022 00:29:08
