@@ -111,6 +111,7 @@ fig.update_traces(marker_color='#7A9E9F')
 
 fig.update_layout(title_text="Monthly Profit/Loss",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
+st.plotly_chart(fig, use_container_width=True)
 # Reservations chart 
 
 cw1, cw2 = st.columns((2.5, 1.7))
@@ -121,7 +122,7 @@ fig2 = go.Figure(
                 values = list(updated.columns),
                 font=dict(size=11, color = 'white'),
                 fill_color = '#264653',
-                line_color = 'rgba(255,255,255,0.2)',
+                # line_color = 'rgba(255,255,255,0.2)',
                 align = ['left','center'],
                 #text wrapping
                 height=20
@@ -130,13 +131,13 @@ fig2 = go.Figure(
                 values = [updated[K].tolist() for K in updated.columns], 
                 font=dict(size=10),
                 align = ['left','center'],
+                fill_color='black',
                 # fill_color = colourcode,
-                line_color = 'rgba(255,255,255,0.2)',
+                # line_color = 'rgba(255,255,255,0.2)',
                 height=20))])
      
 fig2.update_layout(title_text="Reservations",title_font_color = '#264653',title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=600)                                                               
 
 cw1.plotly_chart(fig2, use_container_width=True)  
-
-st.plotly_chart(fig, use_container_width=True)  
+  
 
