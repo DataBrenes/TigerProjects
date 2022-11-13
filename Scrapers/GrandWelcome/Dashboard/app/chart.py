@@ -39,6 +39,8 @@ def CountDaysMonth(Arrival,Departure):
 rpts=gp.get_params('reports')
 costs = gp.get_params('expenses')
 breakdown = pd.read_csv(rpts['breakdown'])
+# remove duplicates
+breakdown = breakdown.drop_duplicates()
 breakdown['Date'] =  pd.to_datetime(breakdown['Date'], format='%Y/%m/%d')
 # import bookings
 res_file=gp.get_params('reservations')

@@ -25,7 +25,7 @@ def checkNewRes(df1,df2):
         master_df = pd.concat([nrow, master_df])
         final_df = pd.concat([nrow, final_df])
         
-    master_df.to_csv('app/reservations/All_reservations.csv',index=False)
+    master_df.to_csv('reservations/All_reservations.csv',index=False)
     
     return final_df
     
