@@ -111,28 +111,28 @@ fig.update_traces(marker_color='#7A9E9F')
 
 fig.update_layout(title_text="Monthly Profit/Loss",title_x=0,margin= dict(l=0,r=10,b=10,t=30), yaxis_title=None, xaxis_title=None)
 
-    fig = go.Figure(
-            data = [go.Table (columnorder = [0,1,2,3,4,5,6,7,8,9,10,11,12], columnwidth = [18,12],
-                header = dict(
-                 values = list(updated.columns),
-                 font=dict(size=11, color = 'white'),
-                 fill_color = '#264653',
-                 line_color = 'rgba(255,255,255,0.2)',
-                 align = ['left','center'],
-                 #text wrapping
-                 height=20
-                 )
-              , cells = dict(
-                  values = [updated[K].tolist() for K in updated.columns], 
-                  font=dict(size=10),
-                  align = ['left','center'],
-                  fill_color = colourcode,
-                  line_color = 'rgba(255,255,255,0.2)',
-                  height=20))])
+fig = go.Figure(
+        data = [go.Table (columnorder = [0,1,2,3,4,5,6,7,8,9,10,11,12], columnwidth = [18,12],
+            header = dict(
+                values = list(updated.columns),
+                font=dict(size=11, color = 'white'),
+                fill_color = '#264653',
+                line_color = 'rgba(255,255,255,0.2)',
+                align = ['left','center'],
+                #text wrapping
+                height=20
+                )
+            , cells = dict(
+                values = [updated[K].tolist() for K in updated.columns], 
+                font=dict(size=10),
+                align = ['left','center'],
+                fill_color = colourcode,
+                line_color = 'rgba(255,255,255,0.2)',
+                height=20))])
      
-    fig.update_layout(title_text="Reservations",title_font_color = '#264653',title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=600)                                                               
-    
-    p1.plotly_chart(fig, use_container_width=True)  
+fig.update_layout(title_text="Reservations",title_font_color = '#264653',title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=600)                                                               
+
+p1.plotly_chart(fig, use_container_width=True)  
 
 st.plotly_chart(fig, use_container_width=True)  
 
