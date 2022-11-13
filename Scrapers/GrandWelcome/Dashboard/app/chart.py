@@ -126,7 +126,7 @@ fig = go.Figure(
                 values = [updated[K].tolist() for K in updated.columns], 
                 font=dict(size=10),
                 align = ['left','center'],
-                fill_color = colourcode,
+                # fill_color = colourcode,
                 line_color = 'rgba(255,255,255,0.2)',
                 height=20))])
      
