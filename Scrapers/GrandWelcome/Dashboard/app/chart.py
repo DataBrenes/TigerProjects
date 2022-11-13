@@ -115,7 +115,7 @@ fig.update_layout(title_text="Monthly Profit/Loss",title_x=0,margin= dict(l=0,r=
 
 cw1, cw2 = st.columns((2.5, 1.7))
 
-fig = go.Figure(
+fig2 = go.Figure(
         data = [go.Table (columnorder = [0,1,2,3,4,5,6,7,8,9,10,11,12], columnwidth = [18,12],
             header = dict(
                 values = list(updated.columns),
@@ -134,9 +134,9 @@ fig = go.Figure(
                 line_color = 'rgba(255,255,255,0.2)',
                 height=20))])
      
-fig.update_layout(title_text="Reservations",title_font_color = '#264653',title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=600)                                                               
+fig2.update_layout(title_text="Reservations",title_font_color = '#264653',title_x=0,margin= dict(l=0,r=10,b=10,t=30), height=600)                                                               
 
-cw1.plotly_chart(fig, use_container_width=True)  
+cw1.plotly_chart(fig2, use_container_width=True)  
 
 st.plotly_chart(fig, use_container_width=True)  
 
