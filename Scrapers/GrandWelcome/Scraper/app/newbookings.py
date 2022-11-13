@@ -116,7 +116,7 @@ while True:
     new_res.columns = ['Res_ID','Guest','CheckIn','CheckOut','Nights']
     n_df=cn.checkNewRes(curr,new_res)
 
-    # Check if new
+    # Check if new save file
     check_new(n_df)
 
     # Send new to calendar
@@ -171,7 +171,10 @@ while True:
     rpts=gp.get_params('reports')
     breakdown.to_csv(rpts['breakdown'],index=False)
 
-
+    # get updated 
+    res_file=gp.get_params('reservations')
+    updated = pd.read_csv(res_file['all_res'])
+    last_book=updated.loc[0]
 
     logging.info("Closing Browser")
     browser.close()
