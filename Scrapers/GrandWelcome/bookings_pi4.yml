@@ -31,5 +31,6 @@ services:
      - ./Dashboard/app:/app
      - ./Scraper/app/configs:/app/configs
      - ./Scraper/app/reports:/app/reports
+     - ./Scraper/app/reservations:/app/reservations
     restart: always
 
