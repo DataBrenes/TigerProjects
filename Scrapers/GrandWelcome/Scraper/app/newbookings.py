@@ -107,13 +107,12 @@ while True:
     
     combined=pd.concat(webtables)
     res_df=combined[['Res. #', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']]
-
+    res_df.columns = ['Res_ID', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']
 
     res_file=gp.get_params('reservations')
     # check if res id exists
     curr = pd.read_csv(res_file['all_res'])
-    new_res=res_df[['Res. #','Guest','Check-In','Checkout','Nights']]
-    new_res.columns = ['Res_ID','Guest','CheckIn','CheckOut','Nights']
+    new_res=res_df[['Res_ID','Guest','Check-In','Checkout','Nights']]
     n_df=cn.checkNewRes(curr,new_res)
 
     # Check if new save file
@@ -130,6 +129,8 @@ while True:
     update =[n_df,curr]
     master_df = pd.concat(update)
     master_df.reset_index(drop=True,inplace=True)
+    master["CheckIn"] = pd.to_datetime(master["CheckIn"]).dt.strftime('%b/%d/%Y')
+    master["CheckOut"] = pd.to_datetime(master["CheckOut"]).dt.strftime('%b/%d/%Y')
     master_df.to_csv(res_file['all_res'],index=False)
     logging.info("Updating Master List")
 
@@ -148,7 +149,7 @@ while True:
     summ=pd.concat(frames)
 
     # create a summary table
-    summ1=summ[['Check-In','Checkout', 'Nights', 'Income']]
+    summ1=summ[['Res_ID','Check-In','Checkout', 'Nights', 'Income']]
     nightly_rate = []
     for i,b in summ1.iterrows():
         Arrival = b['Check-In']

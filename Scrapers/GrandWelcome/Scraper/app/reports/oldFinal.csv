@@ -1,4 +1,4 @@
-Res. #,Status,Unit,Guest,Booked Date,Check-In,Checkout,Nights,Income
+Res_ID,Status,Unit,Guest,Booked Date,Check-In,Checkout,Nights,Income
 29764605,Checked Out,Legendary Times at Story Lake,Katie Dwyer,Mar/01/2021,Mar/22/2021,Mar/28/2021,6,$1147.5
 29725722,Checked Out,Legendary Times at Story Lake,April Mial,Mar/01/2021,Mar/28/2021,Apr/04/2021,7,$1352.83
 30353982,Checked Out,Legendary Times at Story Lake,Asil Abuhadba,Mar/01/2021,Apr/04/2021,Apr/10/2021,6,$1225.31
