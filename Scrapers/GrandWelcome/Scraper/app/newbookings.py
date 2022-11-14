@@ -17,7 +17,8 @@ import build_payload as bp
 import send2cal as cal
 import logging
 import re
-
+from dateutil.parser import parse
+from datetime import date, timedelta
 logging.basicConfig(filename='logs/booking.log', level=logging.INFO)
 
 def check_new(df):
@@ -78,36 +79,45 @@ while True:
     select = Select(browser.find_element(by=By.XPATH, value="//*[@id='table_length']/label/select"))
     # select by value 
     select.select_by_value('100')
+    # Get table 
+    html = browser.page_source
+    table = pd.read_html(html)
+    res_raw_df = table[0]
+    res_df=res_raw_df[['Res. #', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']]
+    res_df.columns = ['Res_ID', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']
 
-    # check if another page 
-    table=browser.find_element(by=By.XPATH, value='//*[@id="table_paginate"]/ul')
-    items = table.text.split()
-    items.remove('Previous')
-    items.remove('Next')
+# Cutting out loop for now as it keeps getting stuck for some reason
+#    # check if another page 
+#    table=browser.find_element(by=By.XPATH, value='//*[@id="table_paginate"]/ul')
+#    items = table.text.split()
+#    items.remove('Previous')
+#    items.remove('Next')
 
     ## download reservations 
     # export=browser.find_element(by=By.XPATH, value="//input[@value='Export']")
     # export.click()
     # sleep(2)
-# multiple pages
-    webtables = []
-    for page in items:
+# multiple pages 
+
+# Try and find a way to check the "showing  blank  to blank of blank entries" to trigger a next
+#    webtables = []
+#    for page in items:
         # set to 100 
-        select = Select(browser.find_element(by=By.XPATH, value="//*[@id='table_length']/label/select"))
+#        select = Select(browser.find_element(by=By.XPATH, value="//*[@id='table_length']/label/select"))
         # select by value 
-        select.select_by_value('100')
+#        select.select_by_value('100')
         # get reservations from web
-        html = browser.page_source
-        table = pd.read_html(html)
-        res_raw_df = table[0]
-        webtables.append(res_raw_df)
+#        html = browser.page_source
+#        table = pd.read_html(html)
+#        res_raw_df = table[0]
+#        webtables.append(res_raw_df)
         # click next page 
-        nxt=browser.find_element(by=By.XPATH, value='//*[@id="table_next"]/a')
-        nxt.click()  
+#        nxt=browser.find_element(by=By.XPATH, value='//*[@id="table_next"]/a')
+#        nxt.click()  
     
-    combined=pd.concat(webtables)
-    res_df=combined[['Res. #', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']]
-    res_df.columns = ['Res_ID', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']
+#    combined=pd.concat(webtables)
+#    res_df=combined[['Res. #', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']]
+#    res_df.columns = ['Res_ID', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']
 
     res_file=gp.get_params('reservations')
     # check if res id exists
@@ -129,8 +139,8 @@ while True:
     update =[n_df,curr]
     master_df = pd.concat(update)
     master_df.reset_index(drop=True,inplace=True)
-    master["CheckIn"] = pd.to_datetime(master["CheckIn"]).dt.strftime('%b/%d/%Y')
-    master["CheckOut"] = pd.to_datetime(master["CheckOut"]).dt.strftime('%b/%d/%Y')
+    master_df["CheckIn"] = pd.to_datetime(master_df["CheckIn"]).dt.strftime('%b/%d/%Y')
+    master_df["CheckOut"] = pd.to_datetime(master_df["CheckOut"]).dt.strftime('%b/%d/%Y')
     master_df.to_csv(res_file['all_res'],index=False)
     logging.info("Updating Master List")
 
@@ -146,29 +156,27 @@ while True:
     rpts=gp.get_params('reports')
     old=pd.read_csv(rpts['old'])
     frames = [res_df,old]
-    summ=pd.concat(frames)
+    summ=pd.concat(frames).reset_index(drop=True)
+    summ.to_csv(rpts['all_res_full]',index=False)
 
     # create a summary table
     summ1=summ[['Res_ID','Check-In','Checkout', 'Nights', 'Income']]
     nightly_rate = []
     for i,b in summ1.iterrows():
-        Arrival = b['Check-In']
-        Departure = b['Checkout']
+        Res_ID = b['Res_ID']
+        Arrival = parse(b['Check-In']).date()
+        Departure = parse(b['Checkout']).date()
         Income_raw = b['Income']
         Income= float(re.sub(r'[^\d.]', '', Income_raw))
-        times=CountDaysMonth(Arrival,Departure)
-
-        # times_df = pd.DataFrame(times) 
-        # times_df.to_csv(rpts['test'],index=False)
-        # summ1.to_csv(rpts['test2'],index=False)
-
+        times = [Arrival + timedelta(days=x) for x in range((Departure-Arrival).days + 1)]
         for t in times:
             nightly = Income / len(times)
             night_form = '{0:.2f}'.format(nightly)
             t_stmp=pd.Timestamp(t)
-            nightly_rate.append([t_stmp,float(night_form)])
-    breakdown = pd.DataFrame(nightly_rate, columns = ['Date', 'Per Night'])
+            nightly_rate.append([Res_ID,t_stmp,float(night_form)])
+    breakdown = pd.DataFrame(nightly_rate, columns = ['Res_ID','Date', 'Per Night'])
     breakdown['Month-Year']=breakdown['Date'].dt.strftime('%m/%Y')
+    breakdown.drop_duplicates(keep='first', inplace=False).reset_index(drop=True)
     rpts=gp.get_params('reports')
     breakdown.to_csv(rpts['breakdown'],index=False)
 

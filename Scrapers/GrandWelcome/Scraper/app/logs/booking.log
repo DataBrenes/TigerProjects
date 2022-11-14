@@ -697,3 +697,98 @@ INFO:root:Creating Summary Table
 INFO:root:Closing Browser
 INFO:root:Done checking for bookings, next check in 30 min ( 18:05:29 )
 INFO:root:11/13/2022 17:35:29
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 18:05:29
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 18:35:48 )
+INFO:root:11/13/2022 18:05:48
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 18:35:48
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 19:06:07 )
+INFO:root:11/13/2022 18:36:07
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:06:07
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 19:36:25 )
+INFO:root:11/13/2022 19:06:25
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:20:00
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:20:35
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:25:51
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:31:21
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:36:51
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:40:11
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:45:34
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:47:28
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:48:12
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:53:31
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:54:12
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 19:59:32
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:00:10
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:05:37
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:06:16
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:11:36
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:12:14
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:17:34
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:18:14
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:23:34
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 20:53:53 )
+INFO:root:11/13/2022 20:23:53
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 20:53:53
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 21:24:11 )
+INFO:root:11/13/2022 20:54:11
