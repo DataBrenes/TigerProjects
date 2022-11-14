@@ -792,3 +792,21 @@ INFO:root:Creating Summary Table
 INFO:root:Closing Browser
 INFO:root:Done checking for bookings, next check in 30 min ( 21:24:11 )
 INFO:root:11/13/2022 20:54:11
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 21:24:11
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 21:54:29 )
+INFO:root:11/13/2022 21:24:29
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 21:54:29
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 22:24:47 )
+INFO:root:11/13/2022 21:54:47

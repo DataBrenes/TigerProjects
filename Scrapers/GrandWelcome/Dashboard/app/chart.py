@@ -35,6 +35,22 @@ def CountDaysMonth(Arrival,Departure):
         Dates_list.append('{}-{}'.format(k,v))
     return Dates_list
 
+def get_last_booked(res_full_df):
+    from dateutil.parser import parse
+    from datetime import datetime 
+    today = parse(datetime.now().strftime("%m/%d/%Y")).date()
+    book_raw = res_full_df['Booked Date']
+    d_list = []
+    for date in book_raw:
+        d_list.append(parse(date).date())
+        
+    cloz_dict = { 
+      abs(today - date) : date 
+      for date in d_list}
+    last_booked = cloz_dict[min(cloz_dict.keys())]
+    booking=res.loc[res['Booked Date'] == last_booked.strftime("%b/%d/%Y")]
+    return booking.tail(1)
+
 # Import breakdown
 rpts=gp.get_params('reports')
 costs = gp.get_params('expenses')
@@ -43,10 +59,10 @@ breakdown = pd.read_csv(rpts['breakdown'])
 breakdown = breakdown.drop_duplicates()
 breakdown['Date'] =  pd.to_datetime(breakdown['Date'], format='%Y/%m/%d')
 # import bookings
-res_file=gp.get_params('reservations')
-updated = pd.read_csv(res_file['all_res'])
-last_book=updated.loc[0]
 
+rpts=gp.get_params('reservations')
+res_full_df=pd.read_csv(rpts['all_res_full'])
+g_last=get_last_booked(res_full_df)
 
 Mrt_HOA=float(costs['mortgage'])+float(costs['club'])+float(costs['resort'])
 op_cost=float(costs['avg_operating'])
@@ -101,6 +117,7 @@ m1.write('')
 m2.metric(label ='Current Income for '+curr_m_name ,value = locale.currency(curr_value, grouping=True), delta = locale.currency(curr_delta, grouping=True) , delta_color = 'normal')
 m3.metric(label ='Income Year to Date',value = locale.currency(ytd_value, grouping=True), delta =locale.currency(ytd_delta, grouping=True), delta_color = 'normal')
 m4.metric(label = 'Income All Time',value = locale.currency(at_value, grouping=True), delta = locale.currency(at_delta, grouping=True) , delta_color = 'normal')
+m5.metric(label = 'Last Booked',value = get_last['Guest']+' '+get_last['Res_ID'], delta = get_last['Check-In']+'-'+get_last['Checkout']+' '+ get_last['Nights']+' '+get_last['Income'] , delta_color = 'normal')
 m1.write('')
 
 date_col = st.selectbox('This is the filter box', breakdown, help = 'Filter report to show only one hospital') # need to change this to be year. 

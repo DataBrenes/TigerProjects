@@ -48,6 +48,22 @@ def CountDaysMonth(Arrival,Departure):
         Dates_list.append('{}-{}'.format(k,v))
     return Dates_list
 
+def get_last_booked(res_full_df):
+    from dateutil.parser import parse
+    from datetime import datetime 
+    today = parse(datetime.now().strftime("%m/%d/%Y")).date()
+    book_raw = res_full_df['Booked Date']
+    d_list = []
+    for date in book_raw:
+        d_list.append(parse(date).date())
+        
+    cloz_dict = { 
+      abs(today - date) : date 
+      for date in d_list}
+    last_booked = cloz_dict[min(cloz_dict.keys())]
+    booking=res.loc[res['Booked Date'] == last_booked.strftime("%b/%d/%Y")]
+    return booking.tail(1)
+
 
 sleep(15)
 
@@ -182,9 +198,9 @@ while True:
 
     # get updated 
     res_file=gp.get_params('reservations')
-    updated = pd.read_csv(res_file['all_res'])
-    last_book=updated.loc[0]
-
+    res_full_df=pd.read_csv(rpts['all_res_full'])
+    get_last_booked(res_full_df)
+ 
     logging.info("Closing Browser")
     browser.close()
 
