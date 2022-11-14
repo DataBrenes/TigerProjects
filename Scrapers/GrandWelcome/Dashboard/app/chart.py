@@ -146,17 +146,17 @@ cw1, cw2 = st.columns((2.5, 1.7))
 fig2 = go.Figure(
         data = [go.Table (columnorder = [0,1,2,3,4,5,6,7,8,9,10,11,12], columnwidth = [18,12],
             header = dict(
-                values = list(updated.columns),
-                font=dict(size=11, color = 'white'),
+                values = list(res_full_df.columns),
+                font=dict(size=25, color = 'white'),
                 fill_color = '#264653',
                 # line_color = 'rgba(255,255,255,0.2)',
                 align = ['left','center'],
                 #text wrapping
-                height=20
+                height=50
                 )
             , cells = dict(
-                values = [updated[K].tolist() for K in updated.columns], 
-                font=dict(size=10),
+                values = [res_full_df[K].tolist() for K in res_full_df.columns], 
+                font=dict(size=18),
                 align = ['left','center'],
                 fill_color='black',
                 # fill_color = colourcode,

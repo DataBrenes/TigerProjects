@@ -819,3 +819,12 @@ INFO:root:Creating Summary Table
 INFO:root:Closing Browser
 INFO:root:Done checking for bookings, next check in 30 min ( 22:55:05 )
 INFO:root:11/13/2022 22:25:05
+INFO:root:Starting new booking check
+INFO:root:11/13/2022 22:55:05
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
+INFO:root:Closing Browser
+INFO:root:Done checking for bookings, next check in 30 min ( 23:25:24 )
+INFO:root:11/13/2022 22:55:24
