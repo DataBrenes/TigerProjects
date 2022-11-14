@@ -48,8 +48,10 @@ def get_last_booked(res_full_df):
       abs(today - date) : date 
       for date in d_list}
     last_booked = cloz_dict[min(cloz_dict.keys())]
-    booking=res.loc[res['Booked Date'] == last_booked.strftime("%b/%d/%Y")]
-    return booking.tail(1)
+    booking=res_full_df.loc[res_full_df['Booked Date'] == last_booked.strftime("%b/%d/%Y")]
+    convert=booking.tail(1)
+    final=convert.to_dict(orient='records')
+    return final
 
 # Import breakdown
 rpts=gp.get_params('reports')
@@ -62,7 +64,8 @@ breakdown['Date'] =  pd.to_datetime(breakdown['Date'], format='%Y/%m/%d')
 
 rpts=gp.get_params('reservations')
 res_full_df=pd.read_csv(rpts['all_res_full'])
-g_last=get_last_booked(res_full_df)
+get_last=get_last_booked(res_full_df)
+#get_last=get_last.to_dict(orient='records')
 
 Mrt_HOA=float(costs['mortgage'])+float(costs['club'])+float(costs['resort'])
 op_cost=float(costs['avg_operating'])
@@ -95,8 +98,13 @@ ytd_delta = round(ytd_value-(int(curr_month))*(Mrt_HOA + op_cost),2)
 total_mrg_mth = len(CountDaysMonth('03/01/2021',datetime.now().strftime('%m/%d/%Y')))
 at_value = round(sum(breakdown['Per Night']),2)
 at_delta = round(at_value-(total_mrg_mth*(Mrt_HOA + op_cost)),2)
+# Last booked payload
 
-###########################
+l_booked = {
+    "value" : get_last[0]['Guest']+' '+str(get_last[0]['Res_ID']),
+    "delta" : get_last[0]['Check-In']+'--'+get_last[0]['Checkout']+' |  '+str(get_last[0]['Nights'])+'@ '+get_last[0]['Income']
+}
+#########################
 #        Build chart      #
 ###########################
 
@@ -117,7 +125,7 @@ m1.write('')
 m2.metric(label ='Current Income for '+curr_m_name ,value = locale.currency(curr_value, grouping=True), delta = locale.currency(curr_delta, grouping=True) , delta_color = 'normal')
 m3.metric(label ='Income Year to Date',value = locale.currency(ytd_value, grouping=True), delta =locale.currency(ytd_delta, grouping=True), delta_color = 'normal')
 m4.metric(label = 'Income All Time',value = locale.currency(at_value, grouping=True), delta = locale.currency(at_delta, grouping=True) , delta_color = 'normal')
-m5.metric(label = 'Last Booked',value = get_last['Guest']+' '+get_last['Res_ID'], delta = get_last['Check-In']+'-'+get_last['Checkout']+' '+ get_last['Nights']+' '+get_last['Income'] , delta_color = 'normal')
+m5.metric(label = 'Last Booked',value = l_booked['value'] , delta = l_booked['delta'] , delta_color = 'off')
 m1.write('')
 
 date_col = st.selectbox('This is the filter box', breakdown, help = 'Filter report to show only one hospital') # need to change this to be year. 
