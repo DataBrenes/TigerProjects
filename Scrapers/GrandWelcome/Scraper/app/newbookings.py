@@ -48,22 +48,6 @@ def CountDaysMonth(Arrival,Departure):
         Dates_list.append('{}-{}'.format(k,v))
     return Dates_list
 
-def get_last_booked(res_full_df):
-    from dateutil.parser import parse
-    from datetime import datetime 
-    today = parse(datetime.now().strftime("%m/%d/%Y")).date()
-    book_raw = res_full_df['Booked Date']
-    d_list = []
-    for date in book_raw:
-        d_list.append(parse(date).date())
-        
-    cloz_dict = { 
-      abs(today - date) : date 
-      for date in d_list}
-    last_booked = cloz_dict[min(cloz_dict.keys())]
-    booking=res.loc[res['Booked Date'] == last_booked.strftime("%b/%d/%Y")]
-    return booking.tail(1)
-
 
 sleep(15)
 
@@ -95,12 +79,15 @@ while True:
     select = Select(browser.find_element(by=By.XPATH, value="//*[@id='table_length']/label/select"))
     # select by value 
     select.select_by_value('100')
+    sleep(5)
     # Get table 
     html = browser.page_source
     table = pd.read_html(html)
     res_raw_df = table[0]
     res_df=res_raw_df[['Res. #', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']]
     res_df.columns = ['Res_ID', 'Status', 'Unit', 'Guest', 'Booked Date', 'Check-In','Checkout', 'Nights', 'Income']
+
+
 
 # Cutting out loop for now as it keeps getting stuck for some reason
 #    # check if another page 
@@ -173,7 +160,7 @@ while True:
     old=pd.read_csv(rpts['old'])
     frames = [res_df,old]
     summ=pd.concat(frames).reset_index(drop=True)
-    summ.to_csv(rpts['all_res_full]',index=False)
+    summ.to_csv(rpts['all_res_full'],index=False)
 
     # create a summary table
     summ1=summ[['Res_ID','Check-In','Checkout', 'Nights', 'Income']]
@@ -196,11 +183,13 @@ while True:
     rpts=gp.get_params('reports')
     breakdown.to_csv(rpts['breakdown'],index=False)
 
+
+
     # get updated 
     res_file=gp.get_params('reservations')
-    res_full_df=pd.read_csv(rpts['all_res_full'])
-    get_last_booked(res_full_df)
- 
+    updated = pd.read_csv(res_file['all_res'])
+    last_book=updated.loc[0]
+
     logging.info("Closing Browser")
     browser.close()
 
