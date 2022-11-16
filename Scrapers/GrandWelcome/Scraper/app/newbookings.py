@@ -125,7 +125,13 @@ while True:
     res_file=gp.get_params('reservations')
     # check if res id exists
     curr = pd.read_csv(res_file['all_res'])
+    # format dates to match for merging
+    res_df=res_df.copy()
+    res_df["Booked Date"] = pd.to_datetime(res_df["Booked Date"]).dt.strftime('%b/%d/%Y')
+    res_df["Check-In"] = pd.to_datetime(res_df["Check-In"]).dt.strftime('%b/%d/%Y')
+    res_df["Checkout"] = pd.to_datetime(res_df["Checkout"]).dt.strftime('%b/%d/%Y')
     new_res=res_df[['Res_ID','Guest','Check-In','Checkout','Nights']]
+
     n_df=cn.checkNewRes(curr,new_res)
 
     # Check if new save file
@@ -150,11 +156,7 @@ while True:
     
     ## merge with old data 
     logging.info("Creating Summary Table")
-    # format dates to match for merging
-    res_df=res_df.copy()
-    res_df["Booked Date"] = pd.to_datetime(res_df["Booked Date"]).dt.strftime('%b/%d/%Y')
-    res_df["Check-In"] = pd.to_datetime(res_df["Check-In"]).dt.strftime('%b/%d/%Y')
-    res_df["Checkout"] = pd.to_datetime(res_df["Checkout"]).dt.strftime('%b/%d/%Y')
+
     
     rpts=gp.get_params('reports')
     old=pd.read_csv(rpts['old'])
