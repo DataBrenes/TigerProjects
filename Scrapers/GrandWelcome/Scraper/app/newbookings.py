@@ -58,6 +58,7 @@ while True:
 
     cred = gp.get_params('login')
     browser = webdriver.Remote('http://bookings:4444/wd/hub', desired_capabilities=DesiredCapabilities.CHROME)
+    sleep(5)
     browser.get(str(cred['url']))
 
     # Login 
