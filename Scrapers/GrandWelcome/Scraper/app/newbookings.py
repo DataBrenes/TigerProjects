@@ -142,8 +142,8 @@ while True:
     update =[n_df,curr]
     master_df = pd.concat(update)
     master_df.reset_index(drop=True,inplace=True)
-    master_df["CheckIn"] = pd.to_datetime(master_df["CheckIn"]).dt.strftime('%b/%d/%Y')
-    master_df["CheckOut"] = pd.to_datetime(master_df["CheckOut"]).dt.strftime('%b/%d/%Y')
+    master_df["Check-In"] = pd.to_datetime(master_df["Check-In"]).dt.strftime('%b/%d/%Y')
+    master_df["Checkout"] = pd.to_datetime(master_df["Checkout"]).dt.strftime('%b/%d/%Y')
     master_df.to_csv(res_file['all_res'],index=False)
     logging.info("Updating Master List")
 
