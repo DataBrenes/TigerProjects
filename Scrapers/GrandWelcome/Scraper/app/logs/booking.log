@@ -147,3 +147,17 @@ INFO:root:Starting new booking check
 INFO:root:11/15/2022 23:19:32
 INFO:root:Starting new booking check
 INFO:root:11/15/2022 23:23:03
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 23:28:23
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 23:29:30
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 23:34:49
+INFO:root:New booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 23:36:08
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
