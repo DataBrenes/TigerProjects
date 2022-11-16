@@ -76,3 +76,52 @@ INFO:root:No new booking found.
 INFO:root:Updating Calendar
 INFO:root:Starting new booking check
 INFO:root:11/15/2022 21:57:03
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:02:33
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:08:03
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:13:32
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:19:03
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:24:33
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:30:02
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:35:33
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:41:03
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:46:32
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:52:03
+INFO:root:No new booking found.
+INFO:root:Updating Calendar
+INFO:root:Starting new booking check
+INFO:root:11/15/2022 22:57:32
+INFO:root:New booking found.
+INFO:root:Updating Calendar
+INFO:googleapiclient.discovery_cache:file_cache is only supported with oauth2client<4.0.0
+INFO:root:Updating Master List
+INFO:root:Creating Summary Table
