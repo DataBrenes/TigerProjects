@@ -163,7 +163,8 @@ while True:
     old=pd.read_csv(rpts['old'])
     frames = [res_df,old]
     summ=pd.concat(frames).reset_index(drop=True)
-    summ.to_csv(rpts['all_res_full'],index=False)
+    res=gp.get_params('reservations')
+    summ.to_csv(res['all_res_full'],index=False)
 
     # create a summary table
     summ1=summ[['Res_ID','Check-In','Checkout', 'Nights', 'Income']]
